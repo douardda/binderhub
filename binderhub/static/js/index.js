@@ -99,6 +99,11 @@ function updateRepoText() {
     $("#ref").prop("disabled", true);
     $("label[for=ref]").prop("disabled", true);
   }
+  else if (provider === "swh") {
+    text = "Software Heritage SWHID (swh:1:rev:c30614ec4587418fb264efb466cba58991029f16)";
+    $("#ref").prop("disabled", true);
+    $("label[for=ref]").prop("disabled", true);
+  }
   $("#repository").attr('placeholder', text);
   $("label[for=repository]").text(text);
   $("#ref").attr('placeholder', placeholder);
@@ -123,7 +128,7 @@ function getBuildFormValues() {
 
   var ref = $('#ref').val().trim() || $("#ref").attr("placeholder");
   if (providerPrefix === 'zenodo' || providerPrefix === 'figshare' || providerPrefix === 'dataverse' ||
-      providerPrefix === 'hydroshare') {
+      providerPrefix === 'hydroshare' || providerPrefix === 'swh') {
     ref = "";
   }
   var path = $('#filepath').val().trim();
